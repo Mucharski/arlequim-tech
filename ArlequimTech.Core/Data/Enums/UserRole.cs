@@ -2,6 +2,7 @@ namespace ArlequimTech.Core.Data.Enums;
 
 public enum UserRole
 {
-    User = 0,
-    Admin = 1
+    None = 0,
+    User = 1,
+    Admin = 2
 }

@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ArlequimTech.Core\ArlequimTech.Core.csproj" />
+    </ItemGroup>
+
 </Project>

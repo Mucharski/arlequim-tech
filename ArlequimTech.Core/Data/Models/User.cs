@@ -1,10 +1,23 @@
+using ArlequimTech.Core.BaseClasses;
 using ArlequimTech.Core.Data.Enums;
 
 namespace ArlequimTech.Core.Data.Models;
 
-public class User
+public class User : DatabaseEntity
 {
-    public Guid Id { get; private set; }
+    public User()
+    {
+        
+    }
+    
+    public User(string name, string email, string password, UserRole role)
+    {
+        Name = name;
+        Email = email;
+        Password = password;
+        Role = role;
+    }
+    
     public string Name { get; private set; }
     public string Email { get; private set; }
     public string Password { get; private set; }

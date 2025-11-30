@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ArlequimTech.Auth.Domain\ArlequimTech.Auth.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
