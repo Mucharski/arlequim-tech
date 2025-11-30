@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: arlequimtech-postgres
+    environment:
+      POSTGRES_USER: test12345
+      POSTGRES_PASSWORD: test12345
+      POSTGRES_DB: arlequimtech
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

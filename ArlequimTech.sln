@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArlequimTech.Auth.Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArlequimTech.Auth.Tests", "ArlequimTech.Auth.Tests\ArlequimTech.Auth.Tests.csproj", "{75E19E31-794F-4774-B3FB-B5D8CCEDD1F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArlequimTech.Core", "ArlequimTech.Core\ArlequimTech.Core.csproj", "{E30C115D-2937-48FD-BA2D-ACC625C29F15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -139,6 +141,10 @@ Global
 		{75E19E31-794F-4774-B3FB-B5D8CCEDD1F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75E19E31-794F-4774-B3FB-B5D8CCEDD1F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75E19E31-794F-4774-B3FB-B5D8CCEDD1F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E30C115D-2937-48FD-BA2D-ACC625C29F15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E30C115D-2937-48FD-BA2D-ACC625C29F15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E30C115D-2937-48FD-BA2D-ACC625C29F15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E30C115D-2937-48FD-BA2D-ACC625C29F15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F0D8F1BD-05B3-4CFF-B97A-964378EBE988} = {FE610C3E-EE75-44C8-854A-52D317FF7955}
