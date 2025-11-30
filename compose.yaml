@@ -1,0 +1,7 @@
+﻿services:
+  arlequimtech:
+    image: arlequimtech
+    build:
+      context: .
+      dockerfile: ArlequimTech/Dockerfile
+

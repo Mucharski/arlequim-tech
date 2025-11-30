@@ -1,0 +1,6 @@
+@ArlequimTech.Stock.API_HostAddress = http://localhost:5250
+
+GET {{ArlequimTech.Stock.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
