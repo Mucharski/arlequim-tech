@@ -69,7 +69,7 @@ Este guia descreve os passos necessários para utilizar a API de autenticação.
 #### Exemplo de Requisição (cURL)
 
 ```bash
-curl -X POST http://localhost:5000/api/auth/createUser \
+curl -X POST http://localhost:8080/api/auth/createUser \
   -H "Content-Type: application/json" \
   -d '{
     "name": "João Silva",
@@ -130,7 +130,7 @@ curl -X POST http://localhost:5000/api/auth/createUser \
 #### Exemplo de Requisição (cURL)
 
 ```bash
-curl -X POST http://localhost:5000/api/auth/login \
+curl -X POST http://localhost:8080/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{
     "email": "joao.silva@email.com",
