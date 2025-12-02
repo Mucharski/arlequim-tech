@@ -1,8 +1,40 @@
+using ArlequimTech.Core.Data;
+using ArlequimTech.Core.Extensions;
+using ArlequimTech.Product.Application.Handlers;
+using ArlequimTech.Product.Application.Handlers.Contracts;
+using ArlequimTech.Product.Domain.Repositories;
+using ArlequimTech.Product.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.WebHost.UseUrls("http://*:8085");
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+{
+    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+    options.SerializerSettings.Formatting = Formatting.Indented;
+    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+});
+
+builder.Services.AddJwtAuthentication(builder.Configuration);
+
 builder.Services.AddOpenApi();
+
+builder.Services.AddScoped<IProductHandler, ProductHandler>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+builder.Services.AddPooledDbContextFactory<Context>((serviceProvider, options) =>
+{
+    options
+        .UseNpgsql(builder.Configuration.GetConnectionString("Postgres"))
+        .LogTo(Console.WriteLine, LogLevel.Error);
+});
 
 var app = builder.Build();
 
@@ -12,30 +44,9 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast");
+app.MapControllers();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
