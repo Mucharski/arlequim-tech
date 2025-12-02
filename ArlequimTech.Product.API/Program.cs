@@ -1,7 +1,9 @@
 using ArlequimTech.Core.Data;
 using ArlequimTech.Core.Extensions;
+using ArlequimTech.Core.Messaging;
 using ArlequimTech.Product.Application.Handlers;
 using ArlequimTech.Product.Application.Handlers.Contracts;
+using ArlequimTech.Product.Application.Services;
 using ArlequimTech.Product.Domain.Repositories;
 using ArlequimTech.Product.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +30,9 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<IProductHandler, ProductHandler>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+builder.Services.Configure<RabbitMqSettings>(builder.Configuration.GetSection("RabbitMQ"));
+builder.Services.AddHostedService<StockEventConsumerService>();
 
 builder.Services.AddPooledDbContextFactory<Context>((serviceProvider, options) =>
 {

@@ -31,4 +31,10 @@ public class Product : DatabaseEntity
         Price = price ?? this.Price;
         UpdatedAt = DateTime.UtcNow;
     }
+
+    public void AddQuantity(int quantity)
+    {
+        QuantityInStock += quantity;
+        UpdatedAt = DateTime.UtcNow;
+    }
 }

@@ -97,4 +97,24 @@ public class ProductHandler : IProductHandler
 
         return new ListProductsCommandResult(products);
     }
+
+    public async Task<ICommandResult<Core.Data.Models.Product>> Handle(AddStockQuantityToProductCommand command)
+    {
+        if (!command.IsValid)
+            return new AddStockQuantityToProductCommandResult(success: false, message: "Erro ao adicionar quantidade ao estoque",
+                errors: command.Notifications().Select(x => x.Message));
+
+        var product = await _productRepository.GetAsync(x => x.Id == command.ProductId);
+
+        if (product == null)
+        {
+            return new AddStockQuantityToProductCommandResult(success: false, message: "Produto não encontrado.");
+        }
+
+        product.AddQuantity(command.Quantity);
+
+        await _productRepository.UpdateAsync(product);
+
+        return new AddStockQuantityToProductCommandResult(product);
+    }
 }

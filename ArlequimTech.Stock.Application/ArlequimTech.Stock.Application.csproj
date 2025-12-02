@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ArlequimTech.Stock.Domain\ArlequimTech.Stock.Domain.csproj" />
+      <ProjectReference Include="..\ArlequimTech.Product.Domain\ArlequimTech.Product.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
