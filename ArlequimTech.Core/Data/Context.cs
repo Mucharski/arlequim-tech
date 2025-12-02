@@ -29,7 +29,6 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<Context>
     {
         var builder = new DbContextOptionsBuilder<Context>();
         builder.UseNpgsql("Host=localhost;Port=5432;Database=arlequimtech;Username=test12345;Password=test12345");
-        builder.EnableSensitiveDataLogging();
         return new Context(builder.Options);
     }
 }

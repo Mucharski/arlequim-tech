@@ -37,4 +37,14 @@ public class Product : DatabaseEntity
         QuantityInStock += quantity;
         UpdatedAt = DateTime.UtcNow;
     }
+
+    public bool DecrementQuantity(int quantity)
+    {
+        if (QuantityInStock < quantity)
+            return false;
+
+        QuantityInStock -= quantity;
+        UpdatedAt = DateTime.UtcNow;
+        return true;
+    }
 }

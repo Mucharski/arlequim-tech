@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="10.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0"/>
     </ItemGroup>
 
@@ -15,6 +16,11 @@
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ArlequimTech.Order.Application\ArlequimTech.Order.Application.csproj" />
+      <ProjectReference Include="..\ArlequimTech.Order.Infrastructure\ArlequimTech.Order.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

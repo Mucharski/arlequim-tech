@@ -30,10 +30,8 @@ public class OrderMapping : IEntityTypeConfiguration<Order>
         builder.HasMany(o => o.Products)
             .WithMany(p => p.Orders)
             .UsingEntity<OrderProduct>(
-                "Order_Product",
-                j => j.HasOne<Product>().WithMany().HasForeignKey(op => op.ProductId),
-                j => j.HasOne<Order>().WithMany().HasForeignKey(op => op.OrderId),
-                j => j.HasKey(op => new { op.OrderId, op.ProductId })
+                l => l.HasOne<Product>().WithMany().HasForeignKey("ProductId").OnDelete(DeleteBehavior.Cascade),
+                r => r.HasOne<Order>().WithMany().HasForeignKey("OrderId").OnDelete(DeleteBehavior.Cascade)
             );
     }
 }
