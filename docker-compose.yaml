@@ -48,6 +48,17 @@ services:
         condition: service_started
       rabbitmq:
         condition: service_healthy
+  order:
+    container_name: arlequimtech-order
+    build:
+      dockerfile: ArlequimTech.Order.API/Dockerfile
+    ports:
+      - "8095:8095"
+      - "8096:8096"
+    environment:
+      - ConnectionStrings__Postgres=Host=postgres;Port=5432;Database=arlequimtech;Username=test12345;Password=test12345
+    depends_on:
+      - postgres
   postgres:
     image: postgres:16
     container_name: arlequimtech-postgres
